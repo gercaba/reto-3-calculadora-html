@@ -11,7 +11,7 @@ body{
 
 .container {
     display:flex;
-    justify-content: center;
+    justify-content: center; /*permite centrar el hijo. En este caso la calculadora */
     align-items: center;
     height: 100vh;
 }
@@ -38,10 +38,15 @@ button{
     box-shadow: 5px 5px 10px -3px #00000040, -5px -5px 15px 3px #00ffc11f;
 }
 button:active{
-    background-color: 00916e;
+    background-color: #00916e;
 }
 button:focus{
     outline:none;
+}
+
+.operador{
+    background-color: #85baad;
+
 }
 
 .display{
@@ -61,6 +66,8 @@ button:focus{
 .col-2{
     grid-column: span 2;
 }
+
+
 #valor-actual{
     font-size: 1.5em;
 
