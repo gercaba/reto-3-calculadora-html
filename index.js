@@ -168,45 +168,32 @@ document.addEventListener("click", function(){
 let numClickEqual = document.getElementById("botonEqual");
 numClickEqual.addEventListener("click", function() {
     if (displayValorActual.indexOf("+")>0) {
-        displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
+        displayValorAnterior.innerHTML=parseFloat(valor1) + parseFloat(valor2);
         displayValorActual ="";
        
-        console.log('valor1 sin coma',valor1);
-        console.log('valor2 sin coma',valor2);
         valor1="";
         valor2="";
 
     }else if (displayValorActual.indexOf("-")>0){
-        displayValorAnterior.innerHTML=-parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
+        displayValorAnterior.innerHTML=-parseFloat(valor1) + parseFloat(valor2);
         displayValorActual ="";
         
-        console.log('valor1 sin coma',valor1);
-        console.log('valor2 sin coma',valor2);
-
         valor1="";
         valor2="";
 
     }else if(displayValorActual.indexOf("x")>0){
-        displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1))*parseFloat(comaPunto(valor2));
+        displayValorAnterior.innerHTML=parseFloat(valor1)*parseFloat(valor2);
         displayValorActual ="";
         
-        console.log('valor1 sin coma',valor1);
-        console.log('valor2 sin coma',valor2);
-
         valor1="";
         valor2="";
 
     }else if(displayValorActual.indexOf("%")){
 
-        console.log('valor1 previo Parse & Math.round',valor1);
-        console.log('valor2 previo Parse & Math.round',valor2);
-
-        displayValorAnterior.innerHTML= Math.round(parseFloat(comaPunto(valor2))/parseFloat(comaPunto(valor1)));
+       //displayValorAnterior.innerHTML= Math.round(parseFloat(valor2)/parseFloat(valor1));
+        displayValorAnterior.innerHTML= round2(valor2/valor1);
         displayValorActual ="";
-        
-        console.log('valor1 sin coma',valor1);
-        console.log('valor2 sin coma',valor2);
-
+      
         valor1="";
         valor2="";
         
@@ -219,7 +206,11 @@ const comaPunto =(strNumber)=>{
     
 }
 
+const round2 =(num) =>{
+    return Math.round((num +Number.EPSILON)*100)/100;
+}
+
 // dudas --> es necesario cambiar el punto por una coma para operar? --> parece que no funciona en mi código
 // ¿Cómo hacer para ejecutar todos los click con una sola función o método?
-// ¿Por qué no funciona el Math.round()
+// ¿Por qué no funciona el Math.round() --> se ha realizado una función
 // ¿Qué otras formas existen de realizar las operaciones?
