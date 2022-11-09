@@ -74,6 +74,13 @@ numClick1.addEventListener("click", function() {
     console.log(displayValorActual);
 });
 
+let numClick0 = document.getElementById("boton0");
+numClick0.addEventListener("click", function() {
+    displayValorActual = displayValorActual + numClick0.value;
+    valor1 = valor1+numClick1.value;
+    console.log(displayValorActual);
+});
+
 let numClickDot = document.getElementById("botonDot");
 numClickDot.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickDot.value;
@@ -95,18 +102,34 @@ numClickSum.addEventListener("click", function() {
 let numClickSubtract = document.getElementById("botonSubtract");
 numClickSubtract.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickSubtract.value;
+    valor2=valor1;
+    valor1="";
+    console.log('DisplayActual',displayValorActual);
+    console.log('valor1', valor1);
+    console.log('valor2',valor2);
     console.log(displayValorActual);
 });
 
 let numClickMult = document.getElementById("botonMult");
 numClickMult.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickMult.value;
+    valor2=valor1;
+    valor1="";
+    console.log('DisplayActual',displayValorActual);
+    console.log('valor1', valor1);
+    console.log('valor2',valor2);
     console.log(displayValorActual);
+    
 });
 
 let numClickDiv = document.getElementById("botonDiv");
 numClickDiv.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickDiv.value;
+    valor2=valor1;
+    valor1="";
+    console.log('DisplayActual',displayValorActual);
+    console.log('valor1', valor1);
+    console.log('valor2',valor2);
     console.log(displayValorActual);
 });
 
@@ -125,6 +148,12 @@ numClickDeleteAll.addEventListener("click", function() {
 let numClickDelete = document.getElementById("botonDelete");
 numClickDelete.addEventListener("click", function() {
     displayValorActual = displayValorActual.substring(0, displayValorActual.length-1);
+    if (valor1=""){
+        valor2 = valor2.substring(0, valor2.length-1);
+    }else{
+        valor1 = valor1.substring(0, valor1.length-1);   
+    }
+    
     console.log(displayValorActual);
 });
 
@@ -138,9 +167,37 @@ document.addEventListener("click", function(){
 //ejecutar las operaciones
 let numClickEqual = document.getElementById("botonEqual");
 numClickEqual.addEventListener("click", function() {
-    displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
-    console.log('valor1 sin coma',valor1);
-    console.log('valor2 sin coma',valor2);
+    if (displayValorActual.indexOf("+")>0) {
+        displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
+        displayValorActual ="";
+        valor1="";
+        valor2="";
+        console.log('valor1 sin coma',valor1);
+        console.log('valor2 sin coma',valor2);
+    }else if (displayValorActual.indexOf("-")>0){
+        displayValorAnterior.innerHTML=-parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
+        displayValorActual ="";
+        valor1="";
+        valor2="";
+        console.log('valor1 sin coma',valor1);
+        console.log('valor2 sin coma',valor2);
+
+    }else if(displayValorActual.indexOf("x")>0){
+        displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1))*parseFloat(comaPunto(valor2));
+        displayValorActual ="";
+        valor1="";
+        valor2="";
+        console.log('valor1 sin coma',valor1);
+        console.log('valor2 sin coma',valor2);
+
+    }else if(displayValorActual.indexOf("%")){
+        displayValorAnterior.innerHTML=parseFloat(comaPunto(valor2)/parseFloat(comaPunto(valor1)));
+        displayValorActual ="";
+        valor1="";
+        valor2="";
+        console.log('valor1 sin coma',valor1);
+        console.log('valor2 sin coma',valor2);
+    }
 });
 
 const comaPunto =(strNumber)=>{
