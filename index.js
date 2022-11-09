@@ -77,6 +77,7 @@ numClick1.addEventListener("click", function() {
 let numClickDot = document.getElementById("botonDot");
 numClickDot.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickDot.value;
+    valor1 = valor1+numClickDot.value
     console.log(displayValorActual);
 });
 
@@ -138,8 +139,12 @@ document.addEventListener("click", function(){
 let numClickEqual = document.getElementById("botonEqual");
 numClickEqual.addEventListener("click", function() {
     displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
+    console.log('valor1 sin coma',valor1);
+    console.log('valor2 sin coma',valor2);
 });
 
 const comaPunto =(strNumber)=>{
+    
     return strNumber=strNumber.replace(/,/g,'.');
+    
 }
