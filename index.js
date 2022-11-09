@@ -71,21 +71,21 @@ let numClick1 = document.getElementById("boton1");
 numClick1.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick1.value;
     valor1 = valor1+numClick1.value;
-    console.log(displayValorActual);
+    //console.log(displayValorActual);
 });
 
 let numClick0 = document.getElementById("boton0");
 numClick0.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick0.value;
     valor1 = valor1+numClick1.value;
-    console.log(displayValorActual);
+    //console.log(displayValorActual);
 });
 
 let numClickDot = document.getElementById("botonDot");
 numClickDot.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickDot.value;
     valor1 = valor1+numClickDot.value
-    console.log(displayValorActual);
+    //console.log(displayValorActual);
 });
 
 //botones de las operaciones
@@ -94,9 +94,9 @@ numClickSum.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickSum.value;
     valor2=valor1;
     valor1="";
-    console.log('DisplayActual',displayValorActual);
-    console.log('valor1', valor1);
-    console.log('valor2',valor2);
+    //console.log('DisplayActual',displayValorActual);
+    //console.log('valor1', valor1);
+    //console.log('valor2',valor2);
 });
 
 let numClickSubtract = document.getElementById("botonSubtract");
@@ -104,10 +104,10 @@ numClickSubtract.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickSubtract.value;
     valor2=valor1;
     valor1="";
-    console.log('DisplayActual',displayValorActual);
-    console.log('valor1', valor1);
-    console.log('valor2',valor2);
-    console.log(displayValorActual);
+    //console.log('DisplayActual',displayValorActual);
+    //console.log('valor1', valor1);
+    //console.log('valor2',valor2);
+    //console.log(displayValorActual);
 });
 
 let numClickMult = document.getElementById("botonMult");
@@ -115,10 +115,10 @@ numClickMult.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickMult.value;
     valor2=valor1;
     valor1="";
-    console.log('DisplayActual',displayValorActual);
-    console.log('valor1', valor1);
-    console.log('valor2',valor2);
-    console.log(displayValorActual);
+    //console.log('DisplayActual',displayValorActual);
+    //console.log('valor1', valor1);
+    //console.log('valor2',valor2);
+    //console.log(displayValorActual);
     
 });
 
@@ -127,10 +127,10 @@ numClickDiv.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickDiv.value;
     valor2=valor1;
     valor1="";
-    console.log('DisplayActual',displayValorActual);
-    console.log('valor1', valor1);
-    console.log('valor2',valor2);
-    console.log(displayValorActual);
+    //console.log('DisplayActual',displayValorActual);
+    //console.log('valor1', valor1);
+    //console.log('valor2',valor2);
+    //console.log(displayValorActual);
 });
 
 let numClickDeleteAll = document.getElementById("botonDeleteAll");
@@ -141,8 +141,8 @@ numClickDeleteAll.addEventListener("click", function() {
     valor1="";
     valor2="";
 
-    console.log(displayValorActual);
-    console.log(displayValorAnterior);
+    //console.log(displayValorActual);
+    //console.log(displayValorAnterior);
 });
 
 let numClickDelete = document.getElementById("botonDelete");
@@ -154,10 +154,10 @@ numClickDelete.addEventListener("click", function() {
         valor1 = valor1.substring(0, valor1.length-1);   
     }
     
-    console.log(displayValorActual);
+    //console.log(displayValorActual);
 });
 
-//Me permite ir pintando en el display lo que se marca
+//Me permite ir pintando en el display lo que se marca de forma permanente
 document.addEventListener("click", function(){
     let displayActual= document.getElementById("valor-actual")
     displayActual.innerHTML = displayValorActual;
@@ -170,33 +170,46 @@ numClickEqual.addEventListener("click", function() {
     if (displayValorActual.indexOf("+")>0) {
         displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
         displayValorActual ="";
-        valor1="";
-        valor2="";
+       
         console.log('valor1 sin coma',valor1);
         console.log('valor2 sin coma',valor2);
+        valor1="";
+        valor2="";
+
     }else if (displayValorActual.indexOf("-")>0){
         displayValorAnterior.innerHTML=-parseFloat(comaPunto(valor1)) + parseFloat(comaPunto(valor2));
         displayValorActual ="";
-        valor1="";
-        valor2="";
+        
         console.log('valor1 sin coma',valor1);
         console.log('valor2 sin coma',valor2);
+
+        valor1="";
+        valor2="";
 
     }else if(displayValorActual.indexOf("x")>0){
         displayValorAnterior.innerHTML=parseFloat(comaPunto(valor1))*parseFloat(comaPunto(valor2));
         displayValorActual ="";
-        valor1="";
-        valor2="";
+        
         console.log('valor1 sin coma',valor1);
         console.log('valor2 sin coma',valor2);
 
-    }else if(displayValorActual.indexOf("%")){
-        displayValorAnterior.innerHTML=parseFloat(comaPunto(valor2)/parseFloat(comaPunto(valor1)));
-        displayValorActual ="";
         valor1="";
         valor2="";
+
+    }else if(displayValorActual.indexOf("%")){
+
+        console.log('valor1 previo Parse & Math.round',valor1);
+        console.log('valor2 previo Parse & Math.round',valor2);
+
+        displayValorAnterior.innerHTML= Math.round(parseFloat(comaPunto(valor2))/parseFloat(comaPunto(valor1)));
+        displayValorActual ="";
+        
         console.log('valor1 sin coma',valor1);
         console.log('valor2 sin coma',valor2);
+
+        valor1="";
+        valor2="";
+        
     }
 });
 
@@ -205,3 +218,8 @@ const comaPunto =(strNumber)=>{
     return strNumber=strNumber.replace(/,/g,'.');
     
 }
+
+// dudas --> es necesario cambiar el punto por una coma para operar? --> parece que no funciona en mi código
+// ¿Cómo hacer para ejecutar todos los click con una sola función o método?
+// ¿Por qué no funciona el Math.round()
+// ¿Qué otras formas existen de realizar las operaciones?
