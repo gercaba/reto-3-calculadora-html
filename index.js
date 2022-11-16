@@ -25,10 +25,6 @@ const solve = ()=> {
             resultado = number1 / number2;
 
     }
-
-    //operando1 = resultado.toFixed(2);
-    //operacion = '';
-    //operando2 = '';
     pintaDisplay();
 }
 
