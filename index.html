@@ -16,27 +16,27 @@
       <div class = "calculadora">
         <div class = "display">
           <div id ="valor-anterior"></div>
-          <div id ="valor-actual"></div>
+          <div id ="valor-actual" ></div>
         </div>
 
-        <button id= "botonDeleteAll" class ="col-2 operador" value ="">C</button>
-        <button id="botonDelete" class ="operador">&larr;</button>
-        <button id = "botonDiv" class="numero operador" value="%">%</button>
-        <button id="boton7" class ="numero" value="7">7</button>
-        <button id="boton8" class ="numero" value="8">8</button>
-        <button id="boton9" class ="numero" value="9">9</button>
-        <button id="botonMult"class="operador" value="x">x</button>
-        <button id="boton4" class ="numero" value="4">4</button>
-        <button id="boton5" class ="numero" value="5">5</button>
-        <button id="boton6" class ="numero" value="6">6</button>
-        <button id="botonSubtract" class="operador" value="-">-</button>
-        <button id="boton1" class ="numero" value="1">1</button>
-        <button id="boton2" class ="numero" value="2">2</button>
-        <button id="boton3" class ="numero" value="3">3</button>
-        <button id="botonSum" class="operador" value ="+">+</button>
-        <button id="boton0" class ="col-2 numero" value="0">0</button>
-        <button id="botonDot" class ="numero"  value=".">.</button>
-        <button id="botonEqual" class="operador">=</button>
+        <button id= "botonDeleteAll" class ="col-2 operador" value ="" onclick="clearDisplay()">C</button>
+        <button id="botonDelete" class ="operador" onclick="del()" value = "DEL">&larr;</button>
+        <button id = "botonDiv" class="numero operador" value="%" onclick="addOperador('%')" >%</button>
+        <button id="boton7" class ="numero" value="7" onclick="addNumber('7')">7</button>
+        <button id="boton8" class ="numero" value="8" onclick="addNumber('8')">8</button>
+        <button id="boton9" class ="numero" value="9" onclick="addNumber('9')">9</button>
+        <button id="botonMult"class="operador" value="x" onclick="addOperador('x')">x</button>
+        <button id="boton4" class ="numero" value="4" onclick="addNumber('4')">4</button>
+        <button id="boton5" class ="numero" value="5" onclick="addNumber('5')">5</button>
+        <button id="boton6" class ="numero" value="6"onclick="addNumber('6')">6</button>
+        <button id="botonSubtract" class="operador" value="-" onclick="addOperador('-')">-</button>
+        <button id="boton1" class ="numero" value="1" onclick="addNumber('1')">1</button>
+        <button id="boton2" class ="numero" value="2" onclick="addNumber('2')">2</button>
+        <button id="boton3" class ="numero" value="3" onclick="addNumber('3')">3</button>
+        <button id="botonSum" class="operador" value ="+" onclick="addOperador('+')">+</button>
+        <button id="boton0" class ="col-2 numero" value="0" onclick="addNumber('0')">0</button>
+        <button id="botonDot" class ="numero"  value="." onclick="addNumber('.')">.</button>
+        <button id="botonEqual" class="operador" onclick="solve()">=</button>
           
       </div>
     </div>

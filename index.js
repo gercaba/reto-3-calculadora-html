@@ -1,7 +1,98 @@
 //https://www.youtube.com/watch?v=7YDagj3cVAk&ab_channel=Programaci%C3%B3nAccesible
-//https://fernandoruizrico.com/calculadora-basica-con-html-css-javascript/
+
+let operando1 = '';
+let operando2='';
+let operacion = '';
+let resultado = '';
+
+const solve = ()=> {
+
+    const number1 = Number.parseFloat(operando1);
+    const number2 = Number.parseFloat(operando2);
+    
+
+    switch (operacion) {
+        case '+': 
+            resultado = number1+number2;    
+            break
+        case '-':
+            resultado = number1-number2;
+            break
+        case 'x':
+            resultado = number1 * number2;
+            break
+        case '%':
+            resultado = number1 / number2;
+
+    }
+
+    //operando1 = resultado.toFixed(2);
+    //operacion = '';
+    //operando2 = '';
+    pintaDisplay();
+}
+
+const clearDisplay = ()=>{
+    operando1='';
+    operando2='';
+    operacion ='';
+    resultado = '';
+    pintaDisplay();
+
+}
+
+const addOperador = (newOperacion) => {
+    operacion = newOperacion;
+    pintaDisplay();
+}
+
+const addNumber = (number) => {
+
+        if (!operacion){
+            operando1 += number
+            //console.log('operando1', operando1);
+        }else {
+            operando2 += number
+            //console.log('operando2', operando2);
+        }
+        pintaDisplay();
+}
+
+const del =() => {
+    if (operando2) {
+        operando2 = operando2.slice(0, operando2.length-1);
+
+    }else if  (operacion){
+        operacion='';
+
+    }else{
+        operando1=operando1.slice(0, operando1.length-1);
+    }
+}
+
+const pintaDisplay = () => {
+
+    
+    document.getElementById("valor-actual").innerHTML = operando1 + operacion + operando2
 
 
+    if (resultado){
+        document.getElementById("valor-anterior").innerHTML = resultado
+        operando1='';
+        operando2='';
+        operacion ='';
+        resultado = '';
+
+    }else {
+        document.getElementById("valor-anterior").innerHTML = "";
+
+    }
+
+    
+    //console.log('concatenación de las tres cadenas', document.getElementById("valor-actual").value)
+}
+
+/*
 let displayValorAnterior =document.getElementById('valor-anterior');
 let displayValorActual = document.getElementById('valor-actual');
 let valor1 ='';
@@ -15,77 +106,77 @@ let numClick9 = document.getElementById("boton9");
 numClick9.addEventListener("click", function() {
     displayValorActual = displayValorActual+numClick9.value
     valor1 = valor1+numClick9.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick8 = document.getElementById("boton8");
 numClick8.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick8.value;
     valor1 = valor1+numClick8.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick7 = document.getElementById("boton7");
 numClick7.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick7.value;
     valor1 = valor1+numClick7.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick6 = document.getElementById("boton6");
 numClick6.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick6.value;
     valor1 = valor1+numClick6.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick5 = document.getElementById("boton5");
 numClick5.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick5.value;
     valor1 = valor1+numClick5.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick4 = document.getElementById("boton4");
 numClick4.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick4.value;
     valor1 = valor1+numClick4.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick3 = document.getElementById("boton3");
 numClick3.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick3.value;
     valor1 = valor1+numClick3.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick2 = document.getElementById("boton2");
 numClick2.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick2.value;
     valor1 = valor1+numClick2.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick1 = document.getElementById("boton1");
 numClick1.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick1.value;
     valor1 = valor1+numClick1.value;
-    //console.log(displayValorActual);
+
 });
 
 let numClick0 = document.getElementById("boton0");
 numClick0.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClick0.value;
     valor1 = valor1+numClick1.value;
-    //console.log(displayValorActual);
+ 
 });
 
 let numClickDot = document.getElementById("botonDot");
 numClickDot.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickDot.value;
     valor1 = valor1+numClickDot.value
-    //console.log(displayValorActual);
+
 });
 
 //botones de las operaciones
@@ -94,9 +185,7 @@ numClickSum.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickSum.value;
     valor2=valor1;
     valor1="";
-    //console.log('DisplayActual',displayValorActual);
-    //console.log('valor1', valor1);
-    //console.log('valor2',valor2);
+
 });
 
 let numClickSubtract = document.getElementById("botonSubtract");
@@ -104,10 +193,7 @@ numClickSubtract.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickSubtract.value;
     valor2=valor1;
     valor1="";
-    //console.log('DisplayActual',displayValorActual);
-    //console.log('valor1', valor1);
-    //console.log('valor2',valor2);
-    //console.log(displayValorActual);
+ 
 });
 
 let numClickMult = document.getElementById("botonMult");
@@ -115,11 +201,6 @@ numClickMult.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickMult.value;
     valor2=valor1;
     valor1="";
-    //console.log('DisplayActual',displayValorActual);
-    //console.log('valor1', valor1);
-    //console.log('valor2',valor2);
-    //console.log(displayValorActual);
-    
 });
 
 let numClickDiv = document.getElementById("botonDiv");
@@ -127,10 +208,6 @@ numClickDiv.addEventListener("click", function() {
     displayValorActual = displayValorActual + numClickDiv.value;
     valor2=valor1;
     valor1="";
-    //console.log('DisplayActual',displayValorActual);
-    //console.log('valor1', valor1);
-    //console.log('valor2',valor2);
-    //console.log(displayValorActual);
 });
 
 let numClickDeleteAll = document.getElementById("botonDeleteAll");
@@ -141,8 +218,6 @@ numClickDeleteAll.addEventListener("click", function() {
     valor1="";
     valor2="";
 
-    //console.log(displayValorActual);
-    //console.log(displayValorAnterior);
 });
 
 let numClickDelete = document.getElementById("botonDelete");
@@ -190,7 +265,6 @@ numClickEqual.addEventListener("click", function() {
 
     }else if(displayValorActual.indexOf("%")){
 
-       //displayValorAnterior.innerHTML= Math.round(parseFloat(valor2)/parseFloat(valor1));
         displayValorAnterior.innerHTML= round2(valor2/valor1);
         displayValorActual ="";
       
@@ -201,9 +275,7 @@ numClickEqual.addEventListener("click", function() {
 });
 
 const comaPunto =(strNumber)=>{
-    
     return strNumber=strNumber.replace(/,/g,'.');
-    
 }
 
 const round2 =(num) =>{
@@ -214,3 +286,6 @@ const round2 =(num) =>{
 // ¿Cómo hacer para ejecutar todos los click con una sola función o método?
 // ¿Por qué no funciona el Math.round() --> se ha realizado una función
 // ¿Qué otras formas existen de realizar las operaciones?
+// ¿Es posible que en las operaciones de mult y div no sea necesario convertir a número?
+
+*/
